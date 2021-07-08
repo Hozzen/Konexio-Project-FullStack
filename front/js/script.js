@@ -3,8 +3,33 @@ $(() => {
 	// et on "branche" une fonction au click du bouton
     getAllCountries();
 
+
     $("#btnShowData").click(handleClick);
+
 });
+
+
+
+// Fonction qui effectue une requête au backend quand on clique
+// sur le bouton Show Data en récupérant la valeur de l'input
+// entrée par l'utilisateur
+const handleClick = async () => {
+    if($("#countryName").is(':checked')){
+        const userSearchValue = $("#inputValue").val();
+        const res = await fetch(`http://localhost:8000/${userSearchValue}`);
+        const jsonRes = await res.json();
+        updateList(jsonRes.data);
+    } else if ($("#capitalName").is(':checked')){
+        const userSearchValue = $("#inputValue").val();
+        const res = await fetch(`http://localhost:8000/country/${userSearchValue}`);
+        const jsonRes = await res.json();
+        updateList(jsonRes.data);
+    } else if (!$("#countryName").is(':checked') && !$("#capitalName").is(':checked')){
+        alert("You haven't checked any options !")
+    } else {
+        alert("This country name or capital doesn't exist !")
+    }
+}
 
 const getAllCountries = async () => {
     const allCountries = await fetch("http://localhost:8000/all");
@@ -35,19 +60,12 @@ const updateList = (list) => {
 
 }
 
+const getCountry = () => {
 
-// Fonction qui effectue une requête au backend quand on clique
-// sur le bouton Show Data en récupérant la valeur de l'input
-// entrée par l'utilisateur
-const handleClick = async () => {
-    const userSearchValue = $("#inputValue").val();
-    console.log(userSearchValue);
-    const res = await fetch(`http://localhost:8000/${userSearchValue}`);
-    const jsonRes = await res.json();
-    console.log(jsonRes);
-
-    updateList(jsonRes.data);
 }
+
+
+
 
 
 

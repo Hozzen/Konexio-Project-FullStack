@@ -28,11 +28,11 @@ app.get("/:countryName", (req, res) => {
     })
 })
 
-app.get("/:countryCapital", (req, res) => {
-    const countryCapital = req.params.countryCapital.toLowerCase();
+app.get("/country/:capital", (req, res) => {
+    const capital = req.params.capital.toLowerCase();
 
     /* On filtre les données des pays pour récupérer juste l'objet contenant la capital qui nous intéresse */
-    const countryData = countriesData.filter((country) => country.capital.toLowerCase() === countryCapital);
+    const countryData = countriesData.filter((country) => country.capital.toLowerCase() === capital);
 
     res.json({
         data: countryData,
