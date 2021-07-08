@@ -6,16 +6,28 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="btnShowData">Show Data</button>
+    <div class="container">
+      <button id="btnShowData">Show Data</button>
 
-    <form action="">
-      <label for="name">Enter the country name</label>
-      <input type="text" placeholder="Example : france" id="inputValue" />
-    </form>
+      <form action="">
+        <label for="name">Enter the country name</label>
+        <input type="text" placeholder="Example : france" id="inputValue" />
 
-    <ul id="countryList"></ul>
+        <div>
+          <input type="radio" id="countryName" value="country name" />
+          <label for="countryName">Country Name</label>
+        </div>
 
-    <script src="jquery.js"></script>
-    <script src="script.js"></script>
+        <div>
+          <input type="radio" id="capitalName" value="capital name" />
+          <label for="capitalName">Capital Name</label>
+        </div>
+      </form>
+
+      <ul id="countryList"></ul>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
